@@ -1,1 +1,5 @@
-package medication_reminder
+package main
+
+func main() {
+
+}
