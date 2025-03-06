@@ -17,7 +17,8 @@ type Config struct {
 }
 
 type App struct {
-	LogLevel string `yaml:"loglevel" env-default:"debug"`
+	LogLevel   string        `yaml:"loglevel" env-default:"debug"`
+	PeriodTime time.Duration `yaml:"period_time" env-required:"true"`
 }
 
 type Http struct {
