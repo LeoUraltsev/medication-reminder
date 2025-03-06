@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/LeoUraltsev/medication-reminder/internal/app"
 	"github.com/LeoUraltsev/medication-reminder/internal/config"
 	"log/slog"
 	"os"
@@ -15,6 +16,11 @@ func main() {
 
 	log := initLogger(cfg.App.LogLevel)
 	log.Info("startup application", slog.String("log level", cfg.App.LogLevel))
+
+	a := app.NewApp(cfg, log)
+	if err := a.Run(); err != nil {
+		log.Error("stop app", slog.String("err", err.Error()))
+	}
 }
 
 func initLogger(logLevel string) *slog.Logger {
