@@ -1,0 +1,8 @@
+http:
+  address: "localhost:10000"
+  idle_timeout: 10s
+  read_timeout: 5s
+  write_timeout: 5s
+
+postgres:
+  connection_url: "postgres://username:password@localhost:5432/database_name"
