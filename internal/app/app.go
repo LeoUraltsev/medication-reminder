@@ -24,7 +24,7 @@ func NewApp(cfg *config.Config, log *slog.Logger) *App {
 func (a App) Run() error {
 	r := chi.NewRouter()
 
-	h := handlers.New(r, &a.cfg.App)
+	h := handlers.New(nil, r, &a.cfg.App, a.log)
 	h.InitHandlers()
 
 	s := http.Server{
