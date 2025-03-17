@@ -13,5 +13,5 @@ type Schedule struct {
 	//От 1 дня до бесконечности
 	DurationOfTreatment time.Time
 	//Расписание приёма
-	TimesTakingPills []time.Time
+	TimesTakingPills []string
 }
