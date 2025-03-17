@@ -2,11 +2,13 @@ package app
 
 import (
 	"fmt"
-	"github.com/LeoUraltsev/medication-reminder/internal/config"
-	"github.com/LeoUraltsev/medication-reminder/internal/handlers"
-	"github.com/go-chi/chi/v5"
 	"log/slog"
 	"net/http"
+
+	"github.com/LeoUraltsev/medication-reminder/internal/config"
+	"github.com/LeoUraltsev/medication-reminder/internal/handlers"
+	"github.com/LeoUraltsev/medication-reminder/internal/services"
+	"github.com/go-chi/chi/v5"
 )
 
 type App struct {
@@ -24,7 +26,9 @@ func NewApp(cfg *config.Config, log *slog.Logger) *App {
 func (a App) Run() error {
 	r := chi.NewRouter()
 
-	h := handlers.New(nil, r, &a.cfg.App, a.log)
+	service := services.New(nil, &a.cfg.App)
+
+	h := handlers.New(service, r, &a.cfg.App, a.log)
 	h.InitHandlers()
 
 	s := http.Server{

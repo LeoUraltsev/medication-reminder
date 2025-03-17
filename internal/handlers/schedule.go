@@ -97,7 +97,7 @@ func (h Handler) CreateSchedule(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	id, err := h.s.AddSchedules(context.Background(), domain.Schedule{
+	id, err := h.s.AddSchedules(context.Background(), &domain.Schedule{
 		UserID:               req.UserID,
 		MedicineName:         req.MedicineName,
 		DurationOfReceptions: req.DurationOfReceptions,
